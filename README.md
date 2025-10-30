@@ -1,0 +1,1 @@
+# effective-mobile_test_task
