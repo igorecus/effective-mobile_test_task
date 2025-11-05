@@ -8,7 +8,7 @@ class MainPageLocators:
     SERVICES = (By.XPATH, "//a[text()='[ Услуги ]']")
     PROJECTS = (By.XPATH, "//a[text()='[ Проекты ]']")
     REVIEWS = (By.XPATH, "//a[text()='[ Отзывы ]']")
-    CONTACTS = (By.XPATH, "//a[text()='[ Контакты ]']")
+    CONTACTS = (By.XPATH, "//span[text()='[ Контакты ]']")
     CHOOSE_A_SUPER_HERO_BUTTON = (By.XPATH, "//a[text()='Выбрать специалиста']")
 
     # Hero section
@@ -90,19 +90,25 @@ class MainPageLocators:
     PREVIOUS_REVIEW_BUTTON = (By.XPATH, "(//button[@aria-label='Предыдущий слайд'])[2]")
 
     # Contacts section
-    CONTACTS_SECTION_TITLE = (By.XPATH, "//div[@data-elem-id='1680516225299']")
+    CONTACTS_SECTION_TITLE = (By.XPATH, "//div[text()='контакты']")
     CALL_TO_ACTION_TEXT = (By.XPATH, "//div[@field='tn_text_1680515874720']")
+    CONTACT_FORM = (By.XPATH, "//div[@data-elem-id='1680516551683']")
 
-    FILL_FIRST_NAME_FILED = (By.XPATH, "//input[@id='nm-1531306243545']")
-    FILL_PHONE_FILED = (By.XPATH, "//input[@id='input_1531306540094']")
+    FILL_FIRST_NAME_FIELD = (By.XPATH, "//input[@id='nm-1531306243545']")
+    FILL_PHONE_FIELD = (By.XPATH, "//input[@id='input_1531306540094']")
     FILL_YOUR_TELEGRAM_FIELD = (By.XPATH, "//input[@id='in-1680516575724']")
     FILL_ADD_INFO_AREA = (By.XPATH, "//textarea[@id='ta-1680516600617']")
     SEND_BUTTON = (By.XPATH, "//textarea[@id='ta-1680516600617']/following::button[@type='submit'][1]")
     SUCCESS_MESSAGE = (By.XPATH, "//div[@id='tildaformsuccesspopuptext']")
+
+    IT_SUPPORT_LINK = (By.XPATH, "//a[@href='https://t.me/assistant_em']")
+    TELEGRAM_LINK = (By.XPATH, "//a[@href='https://t.me/krasnikova_d']")
+    EMAIL_LINK = (By.XPATH, "//a[@href='mailto:dariia.krasnikova@effectivemobile.ru']")
+    PRIVACY_LINK = (By.XPATH, "//a[@href='https://effective-mobile.ru/privacy']")
 
     PRIVATE_POLICY_HIGHLIGHTED_TEXT = (By.XPATH, "(//a[@href='https://effective-mobile.ru/privacy'])[1]")
 
     # FOOTER
     FOOTER_TITLE = (By.XPATH, "//div[@data-elem-id='1680517421264']")
     COMPANY_INFO = (By.XPATH, "//div[@field='tn_text_1680517517329']")
-    PRIVATE_POLICY = (By.XPATH, "//div[@id='sbs-572471347-1680517572082']")
+    FOOTER_PRIVATE_POLICY_LINK = (By.XPATH, "//a[@id='sbs-572471347-1680517572082']")

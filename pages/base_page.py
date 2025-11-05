@@ -68,3 +68,8 @@ class BasePage:
         return WebDriverWait(self.driver, timeout).until(
             EC.invisibility_of_element_located(locator)
         )
+
+    @allure.step("Получить атрибут href элемента")
+    def get_element_href(self, locator, timeout=10):
+        element = self.wait_for_element(locator, timeout)
+        return element.get_attribute('href')

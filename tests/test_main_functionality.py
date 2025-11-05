@@ -1,10 +1,15 @@
 import allure
+
+from helper import generate_registration_data
 from pages.main_page import MainPage
+from urls import Urls
 
 
 class TestMainFunctionality:
 
-    @allure.title("Проверка открытия страницы")
+    # Проверки для проверки открытия главной страницы/главного окна
+
+    @allure.title("Проверка открытия главной страницы")
     def test_open_page(self, driver):
         main_page = MainPage(driver)
 
@@ -20,10 +25,13 @@ class TestMainFunctionality:
 
         actual_page_title = main_page.get_page_title()
         expected_page_title = "Разработка мобильных приложений"
-        assert actual_text == expected_text, f"Ожидался текст '{expected_page_title}', а получен '{actual_page_title}'"
+        assert actual_page_title == expected_page_title, \
+            f"Ожидался текст '{expected_page_title}', а получен '{actual_page_title}'"
 
         assert main_page.is_more_info_button_visible(), "Кнопка 'Подробнее' не отображается"
         assert main_page.is_more_info_button_clickable(), "Кнопка 'Подробнее' не кликабельна"
+
+    # Проверки для раздела О нас
 
     @allure.title("Проверка перехода в раздел 'О нас'")
     def test_transition_to_about_us_section(self, driver):
@@ -34,7 +42,7 @@ class TestMainFunctionality:
         main_page.wait_for_url_contains("#about")
 
         actual_url = driver.current_url
-        expected_url = "https://effective-mobile.ru/#about"
+        expected_url = Urls.ABOUT_COMPANY_BLOCK
         assert actual_url == expected_url, f"Ожидался URL '{expected_url}', а получен '{actual_url}'"
 
         assert main_page.is_about_us_description_visible(), "Описание раздела 'О нас' не отображается"
@@ -43,6 +51,8 @@ class TestMainFunctionality:
         actual_title = main_page.get_about_us_title()
         expected_title = "О нас"
         assert actual_title == expected_title, f"Ожидался заголовок '{expected_title}', а получен '{actual_title}'"
+
+    # Проверки для раздела Услуги
 
     @allure.title("Проверка перехода в раздел 'Услуги'")
     def test_transition_to_services_section(self, driver):
@@ -53,7 +63,7 @@ class TestMainFunctionality:
         main_page.wait_for_url_contains("#moreinfo")
 
         actual_url = driver.current_url
-        expected_url = "https://effective-mobile.ru/#moreinfo"
+        expected_url = Urls.SERVICES_BLOCK
         assert actual_url == expected_url, f"Ожидался URL '{expected_url}', а получен '{actual_url}'"
 
         actual_title = main_page.get_services_title()
@@ -64,6 +74,7 @@ class TestMainFunctionality:
         assert main_page.is_outstaffing_text_visible(), "Текст 'Аутстаффинг IT-персонала' не отображается"
         assert main_page.is_consulting_text_visible(), "Текст 'Консалтинг' не отображается"
 
+    # Проверки для раздела Проекты
 
     @allure.title("Проверка перехода в раздел 'Проекты'")
     def test_transition_to_projects_section(self, driver):
@@ -74,7 +85,7 @@ class TestMainFunctionality:
         main_page.wait_for_url_contains("#cases")
 
         actual_url = driver.current_url
-        expected_url = "https://effective-mobile.ru/#cases"
+        expected_url = Urls.PROJECTS_BLOCK
         assert actual_url == expected_url, f"Ожидался URL '{expected_url}', а получен '{actual_url}'"
 
         assert main_page.is_first_task_visible(), "Первый проект не отображается"
@@ -136,6 +147,8 @@ class TestMainFunctionality:
         main_page.click_back_button()
         assert main_page.is_second_task_visible(), "Второй проект не отображается после возврата"
 
+    # Проверки для раздела Отзывы
+
     @allure.title("Проверка перехода в раздел 'Отзывы'")
     def test_transition_to_reviews_section(self, driver):
         main_page = MainPage(driver)
@@ -145,7 +158,7 @@ class TestMainFunctionality:
         main_page.wait_for_url_contains("#Reviews")
 
         actual_url = driver.current_url
-        expected_url = "https://effective-mobile.ru/#Reviews"
+        expected_url = Urls.REVIEWS_BLOCK
         assert actual_url == expected_url, f"Ожидался URL '{expected_url}', а получен '{actual_url}'"
 
         actual_title = main_page.get_reviews_title()
@@ -183,3 +196,90 @@ class TestMainFunctionality:
 
         main_page.click_previous_review_button()
         assert main_page.is_second_review_visible(), "Второй отзыв не отображается"
+
+    # Проверки для раздела Контакты
+
+    @allure.title("Проверка перехода в раздел 'Контакты'")
+    def test_transition_to_contacts_section(self, driver):
+        main_page = MainPage(driver)
+        main_page.open_main_page()
+
+        main_page.click_contacts_button()
+        main_page.wait_for_url_contains("#contacts")
+
+        actual_url = driver.current_url
+        expected_url = Urls.CONTACTS_BLOCK
+        assert actual_url == expected_url, f"Ожидался URL '{expected_url}', а получен '{actual_url}'"
+
+        actual_title = main_page.get_contacts_title()
+        expected_title = "контакты"
+        assert actual_title == expected_title, f"Ожидался заголовок '{expected_title}', а получен '{actual_title}'"
+
+        actual_call_to_action_title = main_page.get_call_to_action_text()
+        expected_call_to_action_title = "Остались вопросы?\nОставьте заявку\nна консультацию"
+        assert actual_call_to_action_title == expected_call_to_action_title, \
+            f"Ожидался заголовок '{expected_call_to_action_title}', а получен '{actual_call_to_action_title}'"
+
+        assert main_page.is_contact_form_visible(), "Форма заявки не отображается"
+
+    # Проверки для внешних ссылок раздела Контакты
+
+    @allure.title("Проверка отображения ссылок в разделе 'Контакты'")
+    def test_contacts_links_visibility(self, driver):
+        main_page = MainPage(driver)
+        main_page.open_main_page()
+
+        main_page.click_contacts_button()
+        main_page.wait_for_url_contains("#contacts")
+
+        assert main_page.is_it_support_link_visible(), "Ссылка на IT поддержку не отображается"
+        assert main_page.is_telegram_link_visible(), "Ссылка на Telegram не отображается"
+        assert main_page.is_email_link_visible(), "Ссылка на Email не отображается"
+        assert main_page.is_privacy_link_visible(), "Ссылка на Политику конфиденциальности не отображается"
+
+    @allure.title("Проверка корректности href ссылок в разделе 'Контакты'")
+    def test_contacts_links_href(self, driver):
+        main_page = MainPage(driver)
+        main_page.open_main_page()
+
+        main_page.click_contacts_button()
+        main_page.wait_for_url_contains("#contacts")
+
+        it_support_href = main_page.get_it_support_link_href()
+        assert it_support_href == Urls.TELEGRAM_SUPPORT, \
+            f"Ожидался href '{Urls.TELEGRAM_SUPPORT}', а получен '{it_support_href}'"
+
+        telegram_href = main_page.get_telegram_link_href()
+        assert telegram_href == Urls.COFOUNDER_TELEGRAM_LINK, \
+            f"Ожидался href '{Urls.COFOUNDER_TELEGRAM_LINK}', а получен '{telegram_href}'"
+
+        email_href = main_page.get_email_link_href()
+        assert email_href == Urls.EMAIL_SUPPORT, \
+            f"Ожидался href '{Urls.EMAIL_SUPPORT}', а получен '{email_href}'"
+
+        privacy_href = main_page.get_privacy_link_href()
+        assert privacy_href == Urls.PRIVACY_POLICY, \
+            f"Ожидался href '{Urls.PRIVACY_POLICY}', а получен '{privacy_href}'"
+
+    # Проверки для формы заявки
+
+    @allure.title("Проверка заполнения и отправки формы в разделе 'Контакты'")
+    def test_contact_form_submission(self, driver):
+        main_page = MainPage(driver)
+        main_page.open_main_page()
+
+        main_page.click_contacts_button()
+        main_page.wait_for_url_contains("#contacts")
+
+        name, telegram_nick, phone, additional_info = generate_registration_data()
+
+        main_page.fill_first_name_field(name)
+        main_page.fill_phone_field(phone)
+        main_page.fill_telegram_field(telegram_nick)
+        main_page.fill_additional_info_field(additional_info)
+
+        main_page.click_send_button()
+
+        assert main_page.is_success_message_visible(), "Сообщение об успешной отправке не отображается"
+
+

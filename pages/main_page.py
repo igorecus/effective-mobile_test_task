@@ -182,36 +182,82 @@ class MainPage(BasePage):
     def click_previous_review_button(self):
         self.click_on_element(MainPageLocators.PREVIOUS_REVIEW_BUTTON)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    @allure.step("Кликаем по кнопке «Проекты» в Хедере")
-    def click_projects_button(self):
-        self.click_on_element(MainPageLocators.PROJECTS)
-
-    @allure.step("Кликаем по кнопке «Отзывы» в Хедере")
-    def click_reviews_button(self):
-        self.click_on_element(MainPageLocators.REVIEWS)
+    # Методы для раздела "Контакты"
 
     @allure.step("Кликаем по кнопке «Контакты» в Хедере")
     def click_contacts_button(self):
         self.click_on_element(MainPageLocators.CONTACTS)
 
+    @allure.step("Получить текст заголовка 'Контакты'")
+    def get_contacts_title(self):
+        return self.get_text_on_element(MainPageLocators.CONTACTS_SECTION_TITLE)
+
+    @allure.step("Получить текст призыва к действию 'Оставьте заявку...'")
+    def get_call_to_action_text(self):
+        return self.get_text_on_element(MainPageLocators.CALL_TO_ACTION_TEXT)
+
+    @allure.step("Проверить видимость формы заявки на консультацию ")
+    def is_contact_form_visible(self):
+        return self.wait_for_element(MainPageLocators.CONTACT_FORM)
+
+    @allure.step("Проверить видимость ссылки на IT поддержку")
+    def is_it_support_link_visible(self):
+        return self.wait_for_element(MainPageLocators.IT_SUPPORT_LINK)
+
+    @allure.step("Проверить видимость ссылки на Telegram")
+    def is_telegram_link_visible(self):
+        return self.wait_for_element(MainPageLocators.TELEGRAM_LINK)
+
+    @allure.step("Проверить видимость ссылки на Email")
+    def is_email_link_visible(self):
+        return self.wait_for_element(MainPageLocators.EMAIL_LINK)
+
+    @allure.step("Проверить видимость ссылки на Политику конфиденциальности")
+    def is_privacy_link_visible(self):
+        return self.wait_for_element(MainPageLocators.PRIVACY_LINK)
+
+    @allure.step("Получить href ссылки на IT поддержку")
+    def get_it_support_link_href(self):
+        return self.get_element_href(MainPageLocators.IT_SUPPORT_LINK)
+
+    @allure.step("Получить href ссылки на Telegram")
+    def get_telegram_link_href(self):
+        return self.get_element_href(MainPageLocators.TELEGRAM_LINK)
+
+    @allure.step("Получить href ссылки на Email")
+    def get_email_link_href(self):
+        return self.get_element_href(MainPageLocators.EMAIL_LINK)
+
+    @allure.step("Получить href ссылки на Политику конфиденциальности")
+    def get_privacy_link_href(self):
+        return self.get_element_href(MainPageLocators.PRIVACY_LINK)
+
+    # Методы для формы заявки
+
+    @allure.step("Заполнить поле 'Имя'")
+    def fill_first_name_field(self, name):
+        self.send_keys_to_input(MainPageLocators.FILL_FIRST_NAME_FIELD, name)
+
+    @allure.step("Заполнить поле 'Телефон'")
+    def fill_phone_field(self, phone):
+        self.send_keys_to_input(MainPageLocators.FILL_PHONE_FIELD, phone)
+
+    @allure.step("Заполнить поле 'Telegram'")
+    def fill_telegram_field(self, telegram):
+        self.send_keys_to_input(MainPageLocators.FILL_YOUR_TELEGRAM_FIELD, telegram)
+
+    @allure.step("Заполнить поле 'Дополнительная информация'")
+    def fill_additional_info_field(self, info):
+        self.send_keys_to_input(MainPageLocators.FILL_ADD_INFO_AREA, info)
+
+    @allure.step("Кликнуть по кнопке 'Отправить'")
+    def click_send_button(self):
+        self.click_on_element(MainPageLocators.SEND_BUTTON)
+
+    @allure.step("Проверить отображение сообщения об успешной отправке")
+    def is_success_message_visible(self):
+        return self.wait_for_element(MainPageLocators.SUCCESS_MESSAGE)
+
     @allure.step("Кликаем по кнопке «Выбрать специалиста» в Хедере")
     def click_choose_a_super_hero_button(self):
         self.click_on_element(MainPageLocators.CHOOSE_A_SUPER_HERO_BUTTON)
-
