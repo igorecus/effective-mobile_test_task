@@ -258,6 +258,103 @@ class MainPage(BasePage):
     def is_success_message_visible(self):
         return self.wait_for_element(MainPageLocators.SUCCESS_MESSAGE)
 
+    # Методы для раздела "Специалисты"
+
     @allure.step("Кликаем по кнопке «Выбрать специалиста» в Хедере")
     def click_choose_a_super_hero_button(self):
         self.click_on_element(MainPageLocators.CHOOSE_A_SUPER_HERO_BUTTON)
+
+    @allure.step("Получить текст заголовка 'Наш стек'")
+    def get_our_stack_title(self):
+        return self.get_text_on_element(MainPageLocators.OUR_STACK_TITLE)
+
+    @allure.step("Проверить видимость заголовка 'Android (нативная разработка)'")
+    def is_android_dev_title_visible(self):
+        return self.wait_for_element(MainPageLocators.ANDROID_TITLE)
+
+    @allure.step("Проверить видимость заголовка 'iOS (нативная разработка)'")
+    def is_ios_dev_title_visible(self):
+        return self.wait_for_element(MainPageLocators.IOS_TITLE)
+
+    @allure.step("Проверить видимость заголовка 'Flutter (кросплатформенная разработка)'")
+    def is_flutter_dev_title_visible(self):
+        return self.wait_for_element(MainPageLocators.FLUTTER_TITLE)
+
+    # Методы для раздела "Подберем для вас"
+
+    @allure.step("Скроллим до раздела 'Подберем для вас'")
+    def scroll_to_select_it_for_you_section(self):
+        self.scroll_to_element(MainPageLocators.SELECT_IT_FOR_YOU_TITLE)
+
+    @allure.step("Получить текст заголовка 'Подберем для вас'")
+    def get_select_it_for_you_title(self):
+        return self.get_text_on_element(MainPageLocators.SELECT_IT_FOR_YOU_TITLE)
+
+    @allure.step("Проверить видимость заголовка 'Подберем для вас'")
+    def is_select_it_for_you_title_visible(self):
+        return self.wait_for_element(MainPageLocators.SELECT_IT_FOR_YOU_TITLE)
+
+    @allure.step("Проверить видимость карточки 'Mobile-разработчик'")
+    def is_mobile_dev_card_visible(self):
+        self.scroll_to_element(MainPageLocators.DEVELOPMENT_MOBILE_DEV)
+        return self.wait_for_element(MainPageLocators.DEVELOPMENT_MOBILE_DEV)
+
+    @allure.step("Проверить видимость карточки 'Бизнес-аналитик'")
+    def is_business_analyst_card_visible(self):
+        self.scroll_to_element(MainPageLocators.ANALYTICS_BIZ_AN)
+        return self.wait_for_element(MainPageLocators.ANALYTICS_BIZ_AN)
+
+    @allure.step("Проверить видимость карточки 'QA автоматизатор'")
+    def is_qa_auto_card_visible(self):
+        self.scroll_to_element(MainPageLocators.QA_AUTO_CARD)
+        return self.wait_for_element(MainPageLocators.QA_AUTO_CARD)
+
+    @allure.step("Проверить видимость карточки 'PHP-разработчик'")
+    def is_php_dev_card_visible(self):
+        self.scroll_to_element(MainPageLocators.DEVELOPMENT_PHP)
+        return self.wait_for_element(MainPageLocators.DEVELOPMENT_PHP)
+
+    @allure.step("Проверить видимость карточки '1С-аналитик'")
+    def is_1c_analyst_card_visible(self):
+        self.scroll_to_element(MainPageLocators.ANALYTICS_1C)
+        return self.wait_for_element(MainPageLocators.ANALYTICS_1C)
+
+    @allure.step("Проверить видимость кнопки 'Оставить заявку на консультацию'")
+    def is_apply_button_visible(self):
+        self.scroll_to_element(MainPageLocators.SUBMIT_A_REQUEST_FOR_CONSULT_BUTTON)
+        return self.wait_for_element(MainPageLocators.SUBMIT_A_REQUEST_FOR_CONSULT_BUTTON)
+
+    @allure.step("Кликнуть по кнопке 'Оставить заявку на консультацию'")
+    def click_submit_request_for_consult_button(self):
+        self.scroll_to_element(MainPageLocators.SUBMIT_A_REQUEST_FOR_CONSULT_BUTTON)
+        self.click_on_element(MainPageLocators.SUBMIT_A_REQUEST_FOR_CONSULT_BUTTON)
+
+    # Методы для всплывающего окна "Остались вопросы?"
+
+    @allure.step("Проверить видимость всплывающего окна 'Остались вопросы?'")
+    def is_popup_any_other_question_visible(self):
+        return self.wait_for_element(MainPageLocators.POPUP_WINDOW_ANY_OTHER_QUESTION)
+
+    @allure.step("Заполнить поле 'Имя' в попапе")
+    def fill_popup_first_name_field(self, name):
+        self.send_keys_to_input(MainPageLocators.FIRST_NAME_FIELD, name)
+
+    @allure.step("Заполнить поле 'Ваш Telegram' в попапе")
+    def fill_popup_telegram_field(self, telegram):
+        self.send_keys_to_input(MainPageLocators.YOUR_TELEGRAM_FIELD, telegram)
+
+    @allure.step("Кликнуть по кнопке 'Отправить' в попапе")
+    def click_popup_submit_button(self):
+        self.click_on_element(MainPageLocators.SUBMIT_BUTTON)
+
+    @allure.step("Проверить отображение сообщения об успешной отправке в попапе")
+    def is_popup_success_message_visible(self):
+        return self.wait_for_element(MainPageLocators.SUCCESSFULLY_SENT_DATA_WINDOW)
+
+    @allure.step("Закрыть всплывающее окно 'Остались вопросы?'")
+    def close_popup_any_other_question(self):
+        self.click_on_element(MainPageLocators.CLOSE_POPUP_BUTTON)
+
+    @allure.step("Проверить закрытие всплывающего окна 'Остались вопросы?'")
+    def is_popup_any_other_question_closed(self):
+        return self.wait_for_element_to_disappear(MainPageLocators.POPUP_WINDOW_ANY_OTHER_QUESTION)

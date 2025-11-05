@@ -9,7 +9,7 @@ class MainPageLocators:
     PROJECTS = (By.XPATH, "//a[text()='[ Проекты ]']")
     REVIEWS = (By.XPATH, "//a[text()='[ Отзывы ]']")
     CONTACTS = (By.XPATH, "//span[text()='[ Контакты ]']")
-    CHOOSE_A_SUPER_HERO_BUTTON = (By.XPATH, "//a[text()='Выбрать специалиста']")
+    CHOOSE_A_SUPER_HERO_BUTTON = (By.XPATH, "//div[@data-elem-id='1680606406495']")
 
     # Hero section
     MAIN_TITLE = (By.XPATH, "//h1[contains(., 'Разработка') and contains(., 'мобильных приложений')]")
@@ -59,9 +59,9 @@ class MainPageLocators:
 
     # Our Stack section
     OUR_STACK_TITLE = (By.XPATH, "//span[text()='Наш стек']")
-    ANDROID_TEXT = (By.XPATH, "//span[text()='Android (нативная разработка)']")
-    IOS_TEXT = (By.XPATH, "//span[text()='iOS (нативная разработка)']")
-    FLUTTER_TEXT = (By.XPATH, "//span[text()='Flutter (кросплатформенная разработка)']")
+    ANDROID_TITLE = (By.XPATH, "//span[text()='Android (нативная разработка)']")
+    IOS_TITLE = (By.XPATH, "//span[text()='iOS (нативная разработка)']")
+    FLUTTER_TITLE = (By.XPATH, "//span[text()='Flutter (кросплатформенная разработка)']")
 
     # Select it for you section
     SELECT_IT_FOR_YOU_TITLE = (By.XPATH, "//div[@data-elem-id='1680514720242']")

@@ -12,6 +12,7 @@ class Urls:
     PROJECTS_BLOCK = f"{BASE_URL}#cases"  # "Проекты"
     REVIEWS_BLOCK = f"{BASE_URL}#Reviews"  # "Отзывы"
     CONTACTS_BLOCK = f"{BASE_URL}#contacts"  # "Контакты"
+    SPECIALISTS_BLOCK = f"{BASE_URL}#specialists"  # "Специалисты"
 
     # Внешние ссылки в разделе Контакты
 
