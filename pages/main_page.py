@@ -13,9 +13,22 @@ class MainPage(BasePage):
         self.get(Urls.MAIN_PAGE)
 
     @allure.step("Получить название логотипа страницы")
-    def get_page_name(self):
+    def get_page_logo(self):
         text = self.get_text_on_element(MainPageLocators.LOGO)
         return text
+
+    @allure.step("Получить название заголовка страницы")
+    def get_page_title(self):
+        text = self.get_text_on_element(MainPageLocators.MAIN_TITLE)
+        return text
+
+    @allure.step("Проверить наличие кнопки 'Подробнее'")
+    def is_more_info_button_visible(self):
+        return self.wait_for_element(MainPageLocators.ABOUT_US_DESCRIPTION)
+
+    @allure.step("Проверить кликабельность кнопки 'Подробнее'")
+    def is_more_info_button_clickable(self):
+        return self.wait_for_element_to_be_clickable(MainPageLocators.MORE_INFO_BUTTON)
 
     # Методы для раздела "О нас"
 
@@ -139,7 +152,35 @@ class MainPage(BasePage):
     def click_back_button(self):
         self.click_on_element(MainPageLocators.BACK_BUTTON)
 
+    # Методы для раздела "Отзывы"
 
+    @allure.step("Кликаем по кнопке «Отзывы» в Хедере")
+    def click_reviews_button(self):
+        self.click_on_element(MainPageLocators.REVIEWS)
+
+    @allure.step("Получить текст заголовка 'Отзывы клиентов'")
+    def get_reviews_title(self):
+        return self.get_text_on_element(MainPageLocators.CUSTOMER_REVIEWS_TITLE)
+
+    @allure.step("Проверить видимость первого отзыва")
+    def is_first_review_visible(self):
+        return self.wait_for_element(MainPageLocators.FIRST_REVIEW)
+
+    @allure.step("Проверить видимость второго отзыва")
+    def is_second_review_visible(self):
+        return self.wait_for_element(MainPageLocators.SECOND_REVIEW)
+
+    @allure.step("Проверить видимость третьего отзыва")
+    def is_third_review_visible(self):
+        return self.wait_for_element(MainPageLocators.THIRD_REVIEW)
+
+    @allure.step("Кликнуть по кнопке 'Следующий отзыв'")
+    def click_forward_review_button(self):
+        self.click_on_element(MainPageLocators.FORWARD_REVIEW_BUTTON)
+
+    @allure.step("Кликнуть по кнопке 'Предыдущий слайд'")
+    def click_previous_review_button(self):
+        self.click_on_element(MainPageLocators.PREVIOUS_REVIEW_BUTTON)
 
 
 

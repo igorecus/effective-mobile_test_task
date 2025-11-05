@@ -13,7 +13,7 @@ class MainPageLocators:
 
     # Hero section
     MAIN_TITLE = (By.XPATH, "//h1[contains(., 'Разработка') and contains(., 'мобильных приложений')]")
-    DETAILS = (By.XPATH, "//a[text()='Подробнее']")
+    MORE_INFO_BUTTON = (By.XPATH, "//a[text()='Подробнее']")
 
     # About us section
     ABOUT_US_TITLE = (By.XPATH, "//div[text()='О нас']")
@@ -32,7 +32,7 @@ class MainPageLocators:
     LINK_TO_THE_APPLICATION_FORM = (By.XPATH, "//div[@id='sbs-572374517-1680509731311']")
 
     # Services section
-    SERVICES_TITLE = (By.XPATH, "//div[@data-elem-id='1680510339480']")
+    SERVICES_TITLE = (By.XPATH, "//div[text()='услуги']")
     DEVELOPMENT_TEXT = (By.XPATH, "//h2[contains(., 'Разработка') and contains(., 'мобильных приложений')]")
     OUTSTAFFING_TEXT = (By.XPATH, "//h2[contains(., 'АУТСТАФФИНГ ') and contains(., 'IT-персонала и специалистов')]")
     CONSULTING_TEXT = (By.XPATH, "//h2[contains(., 'Консалтинг') and contains(., 'в сфере мобильных разработок')]")
@@ -82,6 +82,12 @@ class MainPageLocators:
 
     # Customer reviews section
     CUSTOMER_REVIEWS_TITLE = (By.XPATH, "//strong[text()='ОТЗЫВЫ КЛИЕНТОВ']")
+    FIRST_REVIEW = (By.XPATH, "(//div[@data-slide-index='1'])[2]")
+    SECOND_REVIEW = (By.XPATH, "(//div[@data-slide-index='2'])[2]")
+    THIRD_REVIEW = (By.XPATH, "(//div[@data-slide-index='3'])[2]")
+
+    FORWARD_REVIEW_BUTTON = (By.XPATH, "(//button[@aria-label='Следующий слайд'])[2]")
+    PREVIOUS_REVIEW_BUTTON = (By.XPATH, "(//button[@aria-label='Предыдущий слайд'])[2]")
 
     # Contacts section
     CONTACTS_SECTION_TITLE = (By.XPATH, "//div[@data-elem-id='1680516225299']")
