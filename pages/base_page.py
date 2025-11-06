@@ -34,34 +34,24 @@ class BasePage:
         element = self.wait_for_element(locator, timeout)
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
 
+    @allure.step("Скролл до элемента расширенный")
+    def scroll_to_element_advance(self, locator, timeout=10):
+        element = WebDriverWait(self.driver, timeout).until(
+            EC.presence_of_element_located(locator)
+        )
+        self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", element)
+        WebDriverWait(self.driver, timeout).until(
+            EC.visibility_of_element_located(locator)
+        )
+
     @allure.step("Получить текст элемента")
     def get_text_on_element(self, locator, timeout=10):
         element = self.wait_for_element(locator, timeout)
         return element.text
 
-    @allure.step("Подождать и проверить, что атрибут элемента содержит текст")
-    def wait_for_attribute(self, locator, attribute, value, timeout=10):
-        return WebDriverWait(self.driver, timeout).until(
-            EC.text_to_be_present_in_element_attribute(locator, attribute, value))
-
-    @allure.step("Найти элемент")
-    def find_element(self, locator):
-        return self.driver.find_element(*locator)
-
-    @allure.step("Найти все элементы по локатору")
-    def find_elements(self, locator):
-        return self.driver.find_elements(*locator)
-
     @allure.step("Ожидание, что URL содержит: {partial_url}")
     def wait_for_url_contains(self, partial_url, timeout=5):
         WebDriverWait(self.driver, timeout).until(EC.url_contains(partial_url))
-
-    @allure.step("Подождать, пока текст элемента станет равен: {expected_text}")
-    def wait_for_text_on_element(self, locator, expected_text, timeout=10):
-        WebDriverWait(self.driver, timeout).until(
-            EC.text_to_be_present_in_element(locator, expected_text),
-            message=f"Текст '{expected_text}' не появился в элементе по локатору {locator}"
-        )
 
     @allure.step("Подождать исчезновения элемента")
     def wait_for_element_to_disappear(self, locator, timeout=10):

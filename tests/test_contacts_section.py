@@ -3,6 +3,8 @@ from pages.main_page import MainPage
 from helper import generate_registration_data
 from urls import Urls
 
+@allure.feature("Главная страница")
+@allure.story("Раздел 'Контакты'")
 class TestContactsSection:
 
     @allure.title("Проверка перехода в раздел 'Контакты'")

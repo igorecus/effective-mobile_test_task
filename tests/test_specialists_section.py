@@ -3,6 +3,8 @@ from pages.main_page import MainPage
 from helper import generate_registration_data
 from urls import Urls
 
+@allure.feature("Главная страница")
+@allure.story("Раздел 'Специалисты'")
 class TestSpecialistsSection:
 
     @allure.title("Проверка перехода в раздел 'Специалисты'")
@@ -59,7 +61,7 @@ class TestSpecialistsSection:
         main_page = MainPage(driver)
         main_page.open_main_page()
 
-        main_page.scroll_to_select_it_for_you_section()
+        main_page.scroll_to_submit_request_for_consult_button()
         main_page.click_submit_request_for_consult_button()
 
         assert main_page.is_popup_any_other_question_visible(), \
@@ -70,7 +72,7 @@ class TestSpecialistsSection:
         main_page = MainPage(driver)
         main_page.open_main_page()
 
-        main_page.scroll_to_select_it_for_you_section()
+        main_page.scroll_to_submit_request_for_consult_button()
         main_page.click_submit_request_for_consult_button()
 
         assert main_page.is_popup_any_other_question_visible(), \
@@ -90,7 +92,7 @@ class TestSpecialistsSection:
         main_page = MainPage(driver)
         main_page.open_main_page()
 
-        main_page.scroll_to_select_it_for_you_section()
+        main_page.scroll_to_submit_request_for_consult_button()
         main_page.click_submit_request_for_consult_button()
 
         assert main_page.is_popup_any_other_question_visible(), \

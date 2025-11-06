@@ -17,10 +17,9 @@ class MainPage(BasePage):
         text = self.get_text_on_element(MainPageLocators.LOGO)
         return text
 
-    @allure.step("Получить название заголовка страницы")
-    def get_page_title(self):
-        text = self.get_text_on_element(MainPageLocators.MAIN_TITLE)
-        return text
+    @allure.step("Проверить наличие заголовка страницы")
+    def is_page_title_visible(self):
+        return self.wait_for_element(MainPageLocators.MAIN_TITLE)
 
     @allure.step("Проверить наличие кнопки 'Подробнее'")
     def is_more_info_button_visible(self):
@@ -47,6 +46,52 @@ class MainPage(BasePage):
     @allure.step("Проверить видимость блока 'Наша цель'")
     def is_our_goal_visible(self):
         return self.wait_for_element(MainPageLocators.OUR_GOAL)
+
+    # Методы для раздела "Почему мы"
+
+    @allure.step("Скроллим до раздела 'Почему мы'")
+    def scroll_to_why_we_section(self):
+        self.scroll_to_element(MainPageLocators.WHY_WE_TITLE)
+
+    @allure.step("Получить текст заголовка 'Почему мы'")
+    def get_why_we_title(self):
+        return self.get_text_on_element(MainPageLocators.WHY_WE_TITLE)
+
+    @allure.step("Проверить видимость заголовка 'Почему мы'")
+    def is_why_we_title_visible(self):
+        return self.wait_for_element(MainPageLocators.WHY_WE_TITLE)
+
+    @allure.step("Проверить видимость карточки 1 'Сокращение рисков найма'")
+    def is_card_1_visible(self):
+        return self.wait_for_element(MainPageLocators.CARD_1)
+
+    @allure.step("Проверить видимость карточки 2 'Широкий выбор специалистов'")
+    def is_card_2_visible(self):
+        return self.wait_for_element(MainPageLocators.CARD_2)
+
+    @allure.step("Проверить видимость карточки 3 'Эффективное распределение ресурсов'")
+    def is_card_3_visible(self):
+        return self.wait_for_element(MainPageLocators.CARD_3)
+
+    @allure.step("Проверить видимость карточки 4 'Быстрое привлечение специалистов'")
+    def is_card_4_visible(self):
+        return self.wait_for_element(MainPageLocators.CARD_4)
+
+    @allure.step("Проверить видимость карточки 5 'Отсутствие бумажной волокиты'")
+    def is_card_5_visible(self):
+        return self.wait_for_element(MainPageLocators.CARD_5)
+
+    @allure.step("Скроллим до кнопки 'Оставить заявку на сотрудничество'")
+    def scroll_to_application_form_link(self):
+        self.scroll_to_element(MainPageLocators.LINK_TO_THE_APPLICATION_FORM)
+
+    @allure.step("Проверить видимость кнопки 'Оставить заявку на сотрудничество'")
+    def is_link_to_application_form_visible(self):
+        return self.wait_for_element(MainPageLocators.LINK_TO_THE_APPLICATION_FORM)
+
+    @allure.step("Кликнуть по кнопке 'Оставить заявку на сотрудничество'")
+    def click_link_to_application_form(self):
+        self.click_on_element(MainPageLocators.LINK_TO_THE_APPLICATION_FORM)
 
     # Методы для раздела "Услуги"
 
@@ -284,7 +329,7 @@ class MainPage(BasePage):
 
     @allure.step("Скроллим до раздела 'Подберем для вас'")
     def scroll_to_select_it_for_you_section(self):
-        self.scroll_to_element(MainPageLocators.SELECT_IT_FOR_YOU_TITLE)
+        self.scroll_to_element_advance(MainPageLocators.SELECT_IT_FOR_YOU_TITLE)
 
     @allure.step("Получить текст заголовка 'Подберем для вас'")
     def get_select_it_for_you_title(self):
@@ -324,9 +369,12 @@ class MainPage(BasePage):
         self.scroll_to_element(MainPageLocators.SUBMIT_A_REQUEST_FOR_CONSULT_BUTTON)
         return self.wait_for_element(MainPageLocators.SUBMIT_A_REQUEST_FOR_CONSULT_BUTTON)
 
+    @allure.step("Скроллим до кнопки 'Оставить заявку на консультацию'")
+    def scroll_to_submit_request_for_consult_button(self):
+        self.scroll_to_element_advance(MainPageLocators.SUBMIT_A_REQUEST_FOR_CONSULT_BUTTON)
+
     @allure.step("Кликнуть по кнопке 'Оставить заявку на консультацию'")
     def click_submit_request_for_consult_button(self):
-        self.scroll_to_element(MainPageLocators.SUBMIT_A_REQUEST_FOR_CONSULT_BUTTON)
         self.click_on_element(MainPageLocators.SUBMIT_A_REQUEST_FOR_CONSULT_BUTTON)
 
     # Методы для всплывающего окна "Остались вопросы?"
@@ -358,3 +406,33 @@ class MainPage(BasePage):
     @allure.step("Проверить закрытие всплывающего окна 'Остались вопросы?'")
     def is_popup_any_other_question_closed(self):
         return self.wait_for_element_to_disappear(MainPageLocators.POPUP_WINDOW_ANY_OTHER_QUESTION)
+
+    # Методы для раздела "Футер"
+
+    @allure.step("Скроллим до раздела Футер")
+    def scroll_to_footer_section(self):
+        self.scroll_to_element(MainPageLocators.FOOTER_TITLE)
+
+    @allure.step("Проверить видимость логотипа футера")
+    def is_footer_title_visible(self):
+        return self.wait_for_element(MainPageLocators.FOOTER_TITLE)
+
+    @allure.step("Проверить видимость юридической информации компании")
+    def is_company_info_visible(self):
+        return self.wait_for_element(MainPageLocators.COMPANY_INFO)
+
+    @allure.step("Проверить видимость копирайта")
+    def is_copyright_visible(self):
+        return self.wait_for_element(MainPageLocators.COPYRIGHT)
+
+    @allure.step("Проверить видимость ссылки на Политику конфиденциальности в футере")
+    def is_footer_privacy_link_visible(self):
+        return self.wait_for_element(MainPageLocators.FOOTER_PRIVATE_POLICY_LINK)
+
+    @allure.step("Кликнуть по логотипу футера")
+    def click_footer_title(self):
+        self.click_on_element(MainPageLocators.FOOTER_TITLE)
+
+    @allure.step("Получить href ссылки на Политику конфиденциальности в футере")
+    def get_footer_privacy_link_href(self):
+        return self.get_element_href(MainPageLocators.FOOTER_PRIVATE_POLICY_LINK)

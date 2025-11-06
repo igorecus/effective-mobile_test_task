@@ -4,16 +4,16 @@ from selenium.webdriver.common.by import By
 class MainPageLocators:
     # Header
     LOGO = (By.XPATH, "//a[text()='Effective Mobile']")
-    ABOUT_US = (By.XPATH, "//a[text()='[ О нас ]']")
-    SERVICES = (By.XPATH, "//a[text()='[ Услуги ]']")
-    PROJECTS = (By.XPATH, "//a[text()='[ Проекты ]']")
-    REVIEWS = (By.XPATH, "//a[text()='[ Отзывы ]']")
+    ABOUT_US = (By.XPATH, "//span[text()='[ О нас ]']")
+    SERVICES = (By.XPATH, "//span[text()='[ Услуги ]']")
+    PROJECTS = (By.XPATH, "//span[text()='[ Проекты ]']")
+    REVIEWS = (By.XPATH, "//span[text()='[ Отзывы ]']")
     CONTACTS = (By.XPATH, "//span[text()='[ Контакты ]']")
     CHOOSE_A_SUPER_HERO_BUTTON = (By.XPATH, "//div[@data-elem-id='1680606406495']")
 
     # Hero section
-    MAIN_TITLE = (By.XPATH, "//h1[contains(., 'Разработка') and contains(., 'мобильных приложений')]")
-    MORE_INFO_BUTTON = (By.XPATH, "//a[text()='Подробнее']")
+    MAIN_TITLE = (By.XPATH, "//h1[@field='tn_text_1680426641457']")
+    MORE_INFO_BUTTON = (By.XPATH, "//span[text()='Подробнее']")
 
     # About us section
     ABOUT_US_TITLE = (By.XPATH, "//div[text()='О нас']")
@@ -64,7 +64,7 @@ class MainPageLocators:
     FLUTTER_TITLE = (By.XPATH, "//span[text()='Flutter (кросплатформенная разработка)']")
 
     # Select it for you section
-    SELECT_IT_FOR_YOU_TITLE = (By.XPATH, "//div[@data-elem-id='1680514720242']")
+    SELECT_IT_FOR_YOU_TITLE = (By.XPATH, "//div[text()='подберем для вас']")
     DEVELOPMENT_MOBILE_DEV = (By.XPATH, "//div[@id='sbs-572441941-1748203600215']")
     ANALYTICS_BIZ_AN = (By.XPATH, "//div[@id='sbs-572441941-1680514742797']")
     QA_AUTO_CARD = (By.XPATH, "//div[@id='sbs-572441941-1748204146196']")
@@ -111,4 +111,5 @@ class MainPageLocators:
     # FOOTER
     FOOTER_TITLE = (By.XPATH, "//div[@data-elem-id='1680517421264']")
     COMPANY_INFO = (By.XPATH, "//div[@field='tn_text_1680517517329']")
-    FOOTER_PRIVATE_POLICY_LINK = (By.XPATH, "//a[@id='sbs-572471347-1680517572082']")
+    FOOTER_PRIVATE_POLICY_LINK = (By.XPATH, "(//a[@href='https://effective-mobile.ru/privacy'])[2]")
+    COPYRIGHT = (By.XPATH, "//div[@field='tn_text_1680517466566']")

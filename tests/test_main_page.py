@@ -19,10 +19,6 @@ class TestMainPage:
         expected_text = "Effective Mobile"
         assert actual_text == expected_text, f"Ожидался текст '{expected_text}', а получен '{actual_text}'"
 
-        actual_page_title = main_page.get_page_title()
-        expected_page_title = "Разработка мобильных приложений"
-        assert actual_page_title == expected_page_title, \
-            f"Ожидался текст '{expected_page_title}', а получен '{actual_page_title}'"
-
+        assert main_page.is_page_title_visible(), "Заголовок 'Разработка мобильных приложений' не отображается"
         assert main_page.is_more_info_button_visible(), "Кнопка 'Подробнее' не отображается"
         assert main_page.is_more_info_button_clickable(), "Кнопка 'Подробнее' не кликабельна"

@@ -2,6 +2,8 @@ import allure
 from pages.main_page import MainPage
 from urls import Urls
 
+@allure.feature("Главная страница")
+@allure.story("Раздел 'Услуги'")
 class TestServicesSection:
 
     @allure.title("Проверка перехода в раздел 'Услуги'")

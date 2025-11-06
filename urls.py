@@ -19,4 +19,4 @@ class Urls:
     TELEGRAM_SUPPORT = "https://t.me/assistant_em"
     COFOUNDER_TELEGRAM_LINK = "https://t.me/krasnikova_d"
     EMAIL_SUPPORT = "mailto:dariia.krasnikova@effectivemobile.ru"
-    PRIVACY_POLICY = f"{BASE_URL}privacy"
+    PRIVACY_POLICY = f"{BASE_URL}privacy"  # "Политика конфиденциальности"
