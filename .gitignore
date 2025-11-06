@@ -2,3 +2,6 @@
 .idea
 .__pycache__/
 *.pyc
+allure-results/
+allure-report/
+data/
